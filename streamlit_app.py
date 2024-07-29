@@ -906,7 +906,7 @@ st.markdown("""
     }
     </style>
     <div class="footer">
-        <p>Built by Shivang | <a href="https://github.com/shivangraikar" target="_blank">
+        <p>Built with ❤️ by Shivang. | <a href="https://github.com/shivangraikar" target="_blank">
         <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub"/> GitHub</a> - Feel free to open PRs!</p>
     </div>
     """, unsafe_allow_html=True)

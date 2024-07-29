@@ -1,23 +1,20 @@
 import streamlit as st
 
-st.set_page_config(page_title='Python', layout='wide',
-                #    initial_sidebar_state=st.session_state.get('sidebar_state', 'collapsed'),
-)
+st.set_page_config(page_title='Python', layout='wide')
 
 st.title("Python - CheatSheet")
 
-_, exp_col, _ = st.columns([1,3,1])
+_, exp_col, _ = st.columns([1, 3, 1])
 with exp_col:
     with st.expander("**📖 How to use this CheatSheet?**"):
         st.markdown("""
-
                     The Python cheat sheet is a one-page reference sheet for the Python 3 programming language.
 
                     A popular programming language. Python can be used on a server to create web applications.
                     """)
         
         st.info("""
-                This application is only secondary to the official Python documentation and serves as a quick guide through code snippets to learn Python. Offical documentation [here.](https://www.python.org/)
+                This application is only secondary to the official Python documentation and serves as a quick guide through code snippets to learn Python. Official documentation [here.](https://www.python.org/)
                 """)
 
 st.sidebar.title("Python Cheatsheet 📄")
@@ -63,7 +60,37 @@ st_code_block("data-types", "Data Types",
 **bool**: Boolean  
 **bytes, bytearray, memoryview**: Binary  
 See: [Data Types](https://docs.python.org/3/library/stdtypes.html)
-""", "")
+""", 
+"""
+# Example of each data type:
+
+# String
+text = "Hello"
+
+# Integer
+integer = 42
+
+# Float
+floating_point = 3.14
+
+# Complex
+complex_number = 1 + 2j
+
+# List
+my_list = [1, 2, 3]
+
+# Tuple
+my_tuple = (1, 2, 3)
+
+# Set
+my_set = {1, 2, 3}
+
+# Dictionary
+my_dict = {"a": 1, "b": 2}
+
+# Boolean
+my_bool = True
+""")
 
 # Slicing String
 st_code_block("slicing-string", "Slicing String", 
@@ -74,6 +101,12 @@ Slice a string to get a substring.
 msg = "Hello, World!"
 print(msg[2:5])
 # llo
+
+print(msg[:5])
+# Hello
+
+print(msg[7:])
+# World!
 """)
 
 # Lists
@@ -83,26 +116,31 @@ Lists are mutable sequences, typically used to store collections of homogeneous 
 See: [Lists](https://docs.python.org/3/tutorial/datastructures.html)
 """, 
 """
-mylist = []
-mylist.append(1)
-mylist.append(2)
-for item in mylist:
-    print(item)
-    # prints out 1,2
+mylist = [1, 2, 3]
+mylist.append(4)
+mylist.insert(0, 0)
+print(mylist) # => [0, 1, 2, 3, 4]
+
+# List Comprehension
+squares = [x**2 for x in range(10)]
+print(squares)
+# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 """)
 
 # If Else
 st_code_block("if-else", "If Else", 
 """
 Basic control flow statement.
-See: [Flow Control](https://docs.python.org/3/tutorial/controlflow.html)
+See: [Flow Control](https://docs.python.org/3/tutorial/controlflow.html#for-statements)
 """, 
 """
 num = 200
 if num > 0:
     print("num is greater than 0")
+elif num == 0:
+    print("num is zero")
 else:
-    print("num is not greater than 0")
+    print("num is less than 0")
 """)
 
 # Loops
@@ -112,11 +150,18 @@ Loop through a sequence of numbers.
 See: [Loops](https://docs.python.org/3/tutorial/controlflow.html#for-statements)
 """, 
 """
+# For Loop
 for item in range(6):
     if item == 3: break
     print(item)
 else:
     print("Finally finished!")
+
+# While Loop
+count = 0
+while count < 3:
+    print(count)
+    count += 1
 """)
 
 # Functions
@@ -126,11 +171,16 @@ Define and call a function.
 See: [Functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
 """, 
 """
-def my_function():
-    print("Hello from a function")
+def my_function(name):
+    return f"Hello, {name}!"
 
-my_function()
-# Hello from a function
+print(my_function("Alice"))
+# Hello, Alice!
+
+# Lambda Function
+square = lambda x: x**2
+print(square(5))
+# 25
 """)
 
 # File Handling
@@ -140,9 +190,13 @@ Open a file and read its contents.
 See: [File Handling](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)
 """, 
 """
+with open("myfile.txt", "w", encoding='utf8') as file:
+    file.write("Hello, World!")
+
 with open("myfile.txt", "r", encoding='utf8') as file:
-    for line in file:
-        print(line)
+    content = file.read()
+    print(content)
+# Hello, World!
 """)
 
 # Arithmetic
@@ -158,6 +212,11 @@ result = 16 / 4  # => 4.0 (Float Division)
 result = 16 // 4 # => 4 (Integer Division)
 result = 25 % 2  # => 1
 result = 5 ** 3  # => 125
+
+# Absolute Value
+abs_value = abs(-10)
+print(abs_value)
+# 10
 """)
 
 # Plus-Equals
@@ -172,7 +231,13 @@ counter = 0
 counter = counter + 10  # => 10
 
 message = "Part 1."
-message += "Part 2."    # => Part 1.Part 2.
+message += " Part 2."    # => Part 1. Part 2.
+
+# Other Operations
+x = [1, 2, 3]
+x *= 2
+print(x)
+# [1, 2, 3, 1, 2, 3]
 """)
 
 # f-Strings (Python 3.6+)
@@ -183,12 +248,14 @@ See: [Python F-Strings](https://docs.python.org/3/reference/lexical_analysis.htm
 """, 
 """
 website = 'Quickref.ME'
-f"Hello, {website}"
-# "Hello, Quickref.ME"
+greeting = f"Hello, {website}"
+print(greeting)
+# Hello, Quickref.ME
 
 num = 10
-f'{num} + 10 = {num + 10}'
-# '10 + 10 = 20'
+formatted_string = f'{num} + 10 = {num + 10}'
+print(formatted_string)
+# 10 + 10 = 20
 """)
 
 # Built-in Data Types
@@ -203,7 +270,8 @@ hello = 'Hello World'
 
 multi_string = \"\"\"Multiline Strings
 Lorem ipsum dolor sit amet,
-consectetur adipiscing elit \"\"\"
+consectetur adipiscing elit.\"\"\"
+print(multi_string)
 """)
 
 st_code_block("numbers", "Numbers", 
@@ -227,8 +295,8 @@ Boolean values in Python.
 my_bool = True 
 my_bool = False
 
-bool(0)     # => False
-bool(1)     # => True
+print(bool(0)) # => False
+print(bool(1)) # => True
 """)
 
 st_code_block("lists", "Lists", 
@@ -241,6 +309,7 @@ list1 = ["apple", "banana", "cherry"]
 list2 = [True, False, False]
 list3 = [1, 5, 7, 9, 3]
 list4 = list((1, 5, 7, 9, 3))
+print(list1[1])  # => banana
 """)
 
 st_code_block("tuples", "Tuple", 
@@ -249,7 +318,14 @@ Tuples are immutable sequences, typically used to store collections of heterogen
 """, 
 """
 my_tuple = (1, 2, 3)
-my_tuple = tuple((1, 2, 3))
+
+
+print(my_tuple[1])
+# 2
+
+a, b, c = my_tuple
+print(a, b, c)
+# 1 2 3
 """)
 
 st_code_block("sets", "Set", 
@@ -258,7 +334,12 @@ Sets are unordered collections of unique items.
 """, 
 """
 set1 = {"a", "b", "c"}   
-set2 = set(("a", "b", "c"))
+print(set1)
+
+# Adding and Removing Items
+set1.add("d")
+set1.remove("b")
+print(set1)
 """)
 
 st_code_block("dictionaries", "Dictionary", 
@@ -268,17 +349,12 @@ Dictionaries are mutable mappings of keys to values.
 """
 empty_dict = {}
 a = {"one": 1, "two": 2, "three": 3}
-a["one"]
-# 1
-a.keys()
-# dict_keys(['one', 'two', 'three'])
-a.values()
-# dict_values([1, 2, 3])
+print(a["one"])  # 1
+print(a.keys())  # dict_keys(['one', 'two', 'three'])
+print(a.values())# dict_values([1, 2, 3])
 a.update({"four": 4})
-a.keys()
-# dict_keys(['one', 'two', 'three', 'four'])
-a['four']
-# 4
+print(a.keys())  # dict_keys(['one', 'two', 'three', 'four'])
+print(a['four']) # 4
 """)
 
 # Casting
@@ -333,11 +409,14 @@ See: [Math Module](https://docs.python.org/3/library/math.html)
 """
 import math
 
-print(math.sqrt(16))
+print(math.sqrt(16)) # Square root
 # 4.0
 
-print(math.pow(2, 3))
+print(math.pow(2, 3)) # Power
 # 8.0
+
+print(math.factorial(5)) # Factorial
+# 120
 """)
 
 # Random Numbers
@@ -349,12 +428,15 @@ See: [Random Module](https://docs.python.org/3/library/random.html)
 """
 import random
 
-print(random.randint(1, 10))
+print(random.randint(1, 10)) # Random integer between 1 and 10
 # prints a random integer between 1 and 10
 
 myList = ['apple', 'banana', 'cherry']
-print(random.choice(myList))
+print(random.choice(myList)) # Random choice from the list
 # prints a random item from the list
+
+print(random.sample(myList, 2)) # Random sample of 2 items
+# prints a list with 2 random items
 """)
 
 # Dates
@@ -368,6 +450,11 @@ import datetime
 
 current_time = datetime.datetime.now()
 print(current_time)
+# 2023-01-01 12:00:00
+
+# Date Formatting
+formatted_date = current_time.strftime("%Y-%m-%d %H:%M:%S")
+print(formatted_date)
 # 2023-01-01 12:00:00
 """)
 
@@ -386,6 +473,11 @@ text = 'One two three four five six'
 matches = re.findall(pattern, text)
 print(matches)
 # ['One', 'two', 'six']
+
+# Matching Patterns
+match = re.search(r'\d+', 'The price is 100 dollars')
+print(match.group())
+# 100
 """)
 
 # JSON
@@ -430,6 +522,22 @@ say_hello()
 # Something is happening before the function is called.
 # Hello!
 # Something is happening after the function is called.
+
+# Decorator with Arguments
+def repeat(num_times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(num_times):
+                func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+@repeat(num_times=3)
+def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Alice")
+# Hello, Alice! (repeated 3 times)
 """)
 
 # Web Scraping
@@ -448,6 +556,11 @@ soup = BeautifulSoup(response.content, 'html.parser')
 
 print(soup.title.string)
 # Example Domain
+
+# Extracting Links
+links = soup.find_all('a')
+for link in links:
+    print(link.get('href'))
 """)
 
 # Data Analysis
@@ -467,6 +580,14 @@ print(df)
 # 0  John   28
 # 1  Anna   24
 # 2  Peter  35
+
+# DataFrame Operations
+df['age'] += 1
+print(df)
+#    name  age
+# 0  John   29
+# 1  Anna   25
+# 2  Peter  36
 """)
 
 # Machine Learning
@@ -490,6 +611,268 @@ model = LinearRegression().fit(X, y)
 predictions = model.predict(np.array([[3, 5]]))
 print(predictions)
 # [16.]
+
+# Model Coefficients
+print("Coefficients:", model.coef_)
+# Coefficients: [1. 2.]
 """)
 
-cols = st.columns(2)
+# Python Classes & Inheritance
+st_code_block("classes-inheritance", "Python Classes & Inheritance", 
+"""
+**Defining a Class**
+""",
+"""
+class MyNewClass:
+    pass
+
+# Class Instantiation
+my = MyNewClass()
+""")
+
+st_code_block("constructors", "Constructors", 
+"""
+**Constructor**
+""",
+"""
+class Animal:
+    def __init__(self, voice):
+        self.voice = voice
+
+cat = Animal('Meow')
+print(cat.voice)    # => Meow
+
+dog = Animal('Woof')
+print(dog.voice)    # => Woof
+""")
+
+st_code_block("methods", "Methods", 
+"""
+**Methods**
+""",
+"""
+class Dog:
+    def bark(self):
+        print("Ham-Ham")
+
+charlie = Dog()
+charlie.bark()   # => "Ham-Ham"
+""")
+
+st_code_block("class-variables", "Class Variables", 
+"""
+**Class Variables**
+""",
+"""
+class MyClass:
+    class_variable = "A class variable!"
+
+print(MyClass.class_variable)  # => A class variable!
+
+x = MyClass()
+print(x.class_variable)       # => A class variable!
+""")
+
+st_code_block("super", "Super() Function", 
+"""
+**Super() Function**
+""",
+"""
+class ParentClass:
+    def print_test(self):
+        print("Parent Method")
+
+class ChildClass(ParentClass):
+    def print_test(self):
+        print("Child Method")
+        super().print_test()
+
+child_instance = ChildClass()
+child_instance.print_test()
+# Child Method
+# Parent Method
+""")
+
+st_code_block("repr-method", "repr() Method", 
+"""
+**repr() Method**
+""",
+"""
+class Employee:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return self.name
+
+john = Employee('John')
+print(john)  # => John
+""")
+
+st_code_block("user-defined-exceptions", "User-Defined Exceptions", 
+"""
+**User-Defined Exceptions**
+""",
+"""
+class CustomError(Exception):
+    pass
+""")
+
+st_code_block("polymorphism", "Polymorphism", 
+"""
+**Polymorphism**
+""",
+"""
+class ParentClass:
+    def print_self(self):
+        print('A')
+
+class ChildClass(ParentClass):
+    def print_self(self):
+        print('B')
+
+obj_A = ParentClass()
+obj_B = ChildClass()
+
+obj_A.print_self() # => A
+obj_B.print_self() # => B
+""")
+
+st_code_block("overriding", "Overriding", 
+"""
+**Overriding**
+""",
+"""
+class ParentClass:
+    def print_self(self):
+        print("Parent")
+
+class ChildClass(ParentClass):
+    def print_self(self):
+        print("Child")
+
+child_instance = ChildClass()
+child_instance.print_self() # => Child
+""")
+
+st_code_block("inheritance", "Inheritance", 
+"""
+**Inheritance**
+""",
+"""
+class Animal: 
+    def __init__(self, name, legs):
+        self.name = name
+        self.legs = legs
+
+class Dog(Animal):
+    def sound(self):
+        print("Woof!")
+
+Yoki = Dog("Yoki", 4)
+print(Yoki.name) # => Yoki
+print(Yoki.legs) # => 4
+Yoki.sound()     # => Woof!
+""")
+
+# Miscellaneous
+st_code_block("comments", "Comments", 
+"""
+**Comments**
+""",
+"""
+# This is a single line comment.
+
+\"\"\" Multiline strings can be written
+    using three "s, and are often used
+    as documentation.
+\"\"\"
+
+''' Multiline strings can be written
+    using three 's, and are often used
+    as documentation.
+'''
+""")
+
+
+st_code_block("generators", "Generators", 
+"""
+**Generators**
+""",
+"""
+def double_numbers(iterable):
+    for i in iterable:
+        yield i + i
+
+values = (-x for x in [1, 2, 3, 4, 5])
+gen_to_list = list(values)
+print(gen_to_list) # => [-1, -2, -3, -4, -5]
+""")
+
+st_code_block("handle-exceptions", "Handle Exceptions", 
+"""
+**Handle Exceptions**
+""",
+"""
+try:
+    raise IndexError("This is an index error")
+except IndexError as e:
+    pass  # Pass is just a no-op. Usually you would do recovery here.
+except (TypeError, NameError):
+    pass  # Multiple exceptions can be handled together, if required.
+else:  # Optional clause to the try/except block. Must follow all except blocks
+    print("All good!")  # Runs only if the code in try raises no exceptions
+finally:  # Execute under all circumstances
+    print("We can clean up resources here")
+""")
+
+# Adding anchor links in the sidebar
+st.sidebar.markdown("""
+- [Getting Started](#getting-started)
+- [Variables](#variables)
+- [Data Types](#data-types)
+- [Slicing String](#slicing-string)
+- [Lists](#lists)
+- [If Else](#if-else)
+- [Loops](#loops)
+- [Functions](#functions)
+- [File Handling](#file-handling)
+- [Arithmetic](#arithmetic)
+- [Plus-Equals](#plus-equals)
+- [f-Strings (Python 3.6+)](#f-strings-python-36)
+- [Built-in Data Types](#built-in-data-types)
+- [Casting](#casting)
+- [Advanced Data Types](#advanced-data-types)
+- [Math Operations](#math)
+- [Random Numbers](#random)
+- [Dates](#dates)
+- [Regular Expressions](#regex)
+- [JSON](#json)
+- [Decorators](#decorators)
+- [Web Scraping](#web-scraping)
+- [Data Analysis](#data-analysis)
+- [Machine Learning](#machine-learning)
+- [Python Classes & Inheritance](#classes-inheritance)
+- [Miscellaneous](#comments)
+""")
+
+st.sidebar.markdown("**Python Class & Inheritance**")
+st.sidebar.markdown("""
+- [Defining Classes](#defining-a-class)
+- [Constructors](#constructors)
+- [Methods](#methods)
+- [Class Variables](#class-variables)
+- [Super() Function](#super-function)
+- [repr() Method](#repr-method)
+- [User-Defined Exceptions](#user-defined-exceptions)
+- [Polymorphism](#polymorphism)
+- [Overriding](#overriding)
+- [Inheritance](#inheritance)
+""")
+
+st.sidebar.markdown("**Miscellaneous**")
+st.sidebar.markdown("""
+- [Comments](#comments)
+- [Generators](#generators)
+- [Handle Exceptions](#handle-exceptions)
+""")

@@ -1,6 +1,7 @@
 import streamlit as st
 
 st.set_page_config(page_title='Python', layout='wide')
+st.markdown('<a id="top"></a>', unsafe_allow_html=True)
 
 st.title("Python - CheatSheet")
 
@@ -896,33 +897,63 @@ st.sidebar.markdown("""
 # Footer
 st.markdown("""
     <style>
-    .footer {
-        width: 100%;
-        background-color: #f1f1f1;
-        text-align: center;
-        padding: 10px;
-        font-size: 14px;
-        color: #333;
-        border-top: 1px solid #ddd;
-        position: relative;
-        bottom: 0;
-    }
-    .footer a {
-        color: #1f77b4;
-        text-decoration: none;
-    }
-    .footer a:hover {
-        text-decoration: underline;
-    }
-    .footer img {
-        vertical-align: middle;
-        width: 20px;
-        height: 20px;
-        margin-left: 5px;
-    }
+        .footer {
+            width: 100%;
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #333;
+            border-top: 1px solid #ddd;
+            position: relative;
+            bottom: 0;
+            clear: both;
+        }
+        .footer a {
+            color: #000;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: none;
+        }
+        .footer img {
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+        }
+        .move-to-top-footer {
+            display: inline-block;
+            padding: 10px;
+            background-color: #F7E7A0; /* Yellow color */
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .move-to-top-footer:hover {
+            background-color: #F7C67A; /* Orange color */
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .main {
+            padding-bottom: 50px;
+        }
+        #top {
+            scroll-margin-top: 70px;
+        }
     </style>
-    <div class="footer">
-        <p>Built with ❤️ by Shivang. | <a href="https://github.com/shivangraikar" target="_blank">
-        <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub"/> GitHub</a> - Feel free to open PRs!</p>
+    <div class="main">
+        <!-- Footer content -->
+        <div class="footer">
+            <p>Built with ❤️ by Shivang. | 
+            <a href="https://github.com/shivangraikar" target="_blank">
+            <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub"/> GitHub</a> - Feel free to open PRs! |
+            <a href="#top" class="move-to-top-footer">Move to Top</a></p>
+        </div>
     </div>
-    """, unsafe_allow_html=True)
+""", unsafe_allow_html=True)

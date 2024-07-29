@@ -876,3 +876,37 @@ st.sidebar.markdown("""
 - [Generators](#generators)
 - [Handle Exceptions](#handle-exceptions)
 """)
+
+# Footer
+st.markdown("""
+    <style>
+    .footer {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+        color: #333;
+        border-top: 1px solid #ddd;
+        position: relative;
+        bottom: 0;
+    }
+    .footer a {
+        color: #1f77b4;
+        text-decoration: none;
+    }
+    .footer a:hover {
+        text-decoration: underline;
+    }
+    .footer img {
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+    }
+    </style>
+    <div class="footer">
+        <p>Built by Shivang | <a href="https://github.com/shivangraikar" target="_blank">
+        <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub"/> GitHub</a> - Feel free to open PRs!</p>
+    </div>
+    """, unsafe_allow_html=True)

@@ -17,6 +17,22 @@ with exp_col:
                 This application is only secondary to the official Python documentation and serves as a quick guide through code snippets to learn Python. Official documentation [here.](https://www.python.org/)
                 """)
 
+# Add a welcome message
+st.sidebar.markdown("""
+    ## Welcome!
+    Explore the Python Cheatsheet and learn various concepts and functionalities of Python.
+    Use the navigation below to get started.
+""")
+
+# Add navigation instructions
+st.sidebar.markdown("""
+    ### How to Use
+    - Use the sections below to quickly navigate through different topics.
+    - Click on any section to view code snippets and explanations.
+    - For any questions or feedback, feel free to reach out!
+""")
+
+# Add sidebar title
 st.sidebar.title("Python Cheatsheet 📄")
 
 # Function to display a code block section
@@ -618,7 +634,7 @@ print("Coefficients:", model.coef_)
 """)
 
 # Python Classes & Inheritance
-st_code_block("classes-inheritance", "Python Classes & Inheritance", 
+st_code_block("defining-a-class", "Python Classes & Inheritance", 
 """
 **Defining a Class**
 """,
